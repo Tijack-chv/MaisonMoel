@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+/*
 class BottomBar_Principal extends StatefulWidget {
   const BottomBar_Principal({super.key});
 
@@ -51,3 +51,4 @@ class _BottomBar_PrincipalState extends State<BottomBar_Principal> {
     );
   }
 }
+*/
