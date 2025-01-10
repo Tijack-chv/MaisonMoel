@@ -40,6 +40,25 @@ class _ConnexionState extends State<Connexion> {
     super.dispose();
   }
 
+  onLogin () {
+    setState(() {
+      _loading = true;
+    });
+    _getData();
+  }
+
+  onPasswordChange (value) {
+    setState(() {
+      _password = value;
+    });
+  }
+  onLoginChange (value) {
+    setState(() {
+      _username = value;
+    });
+  }
+
+
   @override
   Widget build(BuildContext context) {
     if (_loading) {
@@ -47,7 +66,7 @@ class _ConnexionState extends State<Connexion> {
     } else if (_data != null) {
       //page de connexion
       Navigator.pushNamed(context,'/home');
-      return Center();
+      return const Center();
     } else {
       return Scaffold(
         body: Stack(
@@ -91,8 +110,8 @@ class _ConnexionState extends State<Connexion> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const TextField(
-                        decoration: InputDecoration(
+                      TextField(
+                        decoration: const InputDecoration(
                           suffixIcon: Icon(Icons.check,color: Colors.grey,),
                           label: Text(
                             'Adresse-mail',
@@ -102,7 +121,10 @@ class _ConnexionState extends State<Connexion> {
                             ),
                           ),
                         ),
-                        style: TextStyle(color: Colors.grey),
+                        onChanged: (value) {
+                          onLoginChange(value);
+                        },
+                        style: const TextStyle(color: Colors.grey),
                       ),
                       TextField(
                         obscureText: obscureText,
@@ -112,9 +134,6 @@ class _ConnexionState extends State<Connexion> {
                             onPressed: () {
                               setState(() {
                                 obscureText = !obscureText;
-                                if(!obscureText) {
-
-                                }
                               });
                             },
                           ),
@@ -126,6 +145,9 @@ class _ConnexionState extends State<Connexion> {
                             ),
                           ),
                         ),
+                        onChanged: (value) {
+                          onPasswordChange(value);
+                        },
                         style: const TextStyle(color: Colors.grey),
                       ),
                       const SizedBox(height: 16.0),
@@ -162,7 +184,7 @@ class _ConnexionState extends State<Connexion> {
                             ),
                           ),
                         ),
-                        onTap: () => Navigator.pushNamed(context,'/home'),
+                        onTap: () { onLogin(); },
                       ),
                       const SizedBox(height: 120),
                     ],
