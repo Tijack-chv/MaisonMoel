@@ -77,7 +77,7 @@ class _ConnexionState extends State<Connexion> {
               decoration: const BoxDecoration(
                 gradient: LinearGradient(
                     colors: [
-                      Colors.orangeAccent,
+                      Colors.amberAccent,
                       Colors.black,
                     ]
                 ),
@@ -117,7 +117,7 @@ class _ConnexionState extends State<Connexion> {
                             'Adresse-mail',
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              color: Colors.orangeAccent,
+                              color: Colors.grey,
                             ),
                           ),
                         ),
@@ -141,7 +141,7 @@ class _ConnexionState extends State<Connexion> {
                             'Mot de passe',
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              color: Colors.orangeAccent,
+                              color: Colors.grey,
                             ),
                           ),
                         ),
@@ -156,7 +156,7 @@ class _ConnexionState extends State<Connexion> {
                         child: Text(
                           'Mot de passe oublié ?',
                           style: TextStyle(
-                            color: Colors.orange,
+                            color: Colors.grey,
                           ),
                         ),
                       ),
@@ -169,7 +169,7 @@ class _ConnexionState extends State<Connexion> {
                             borderRadius: BorderRadius.circular(30),
                             gradient: const LinearGradient(
                                 colors: [
-                                  Colors.orangeAccent,
+                                  Colors.amberAccent,
                                   Colors.black,
                                 ]
                             ),
@@ -184,7 +184,10 @@ class _ConnexionState extends State<Connexion> {
                             ),
                           ),
                         ),
-                        onTap: () { onLogin(); },
+                          onTap: () =>
+
+                              Navigator.pushNamed(context,'/home')
+                        //onTap: () { onLogin(); },
                       ),
                       const SizedBox(height: 120),
                     ],
