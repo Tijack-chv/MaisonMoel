@@ -19,6 +19,7 @@ class _Appbar_PrincipalState extends State<Appbar_Principal> {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      automaticallyImplyLeading: false,
       iconTheme: const IconThemeData(color: Colors.black),
       titleTextStyle: const TextStyle(
           color: Colors.black,

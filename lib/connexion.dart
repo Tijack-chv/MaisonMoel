@@ -19,12 +19,38 @@ class _ConnexionState extends State<Connexion> {
   String _username = '';
   String _password = '';
 
-  _getData() async {
-    API.login(_username, _password).then((response) {
+  void _showDialog(String message) {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: const Align(
+              alignment: Alignment.center,
+              child: Icon(Icons.highlight_off_outlined, color: Colors.red, size: 50),
+            ),
+            content: Text(
+              message,
+              style: const TextStyle(
+                color: Colors.black
+              )
+            ),
+            backgroundColor: Colors.white,
+          );
+        }
+    );
+  }
+
+  _getData(String username, String password) {
+    API.login(username, password).then((response) {
       setState(() {
-        _data = LoginData.fromJson(json.decode(response.body));
         _loading = false;
+        if (response['error'] != null) {
+          _showDialog(response['error']);
+        } else {
+          Navigator.pushNamed(context,'/home');
+        }
       });
+
     }).catchError((error) {
       _loading = false;
     });
@@ -44,7 +70,7 @@ class _ConnexionState extends State<Connexion> {
     setState(() {
       _loading = true;
     });
-    _getData();
+    _getData(_username, _password);
   }
 
   onPasswordChange (value) {
@@ -107,8 +133,7 @@ class _ConnexionState extends State<Connexion> {
                 width: double.infinity,
                 child: Padding(
                   padding: const EdgeInsets.only(left: 36.0,right: 36.0),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                  child: ListView(
                     children: [
                       TextField(
                         decoration: const InputDecoration(
@@ -184,10 +209,7 @@ class _ConnexionState extends State<Connexion> {
                             ),
                           ),
                         ),
-                          onTap: () =>
-
-                              Navigator.pushNamed(context,'/home')
-                        //onTap: () { onLogin(); },
+                        onTap: () { onLogin(); },
                       ),
                       const SizedBox(height: 120),
                     ],

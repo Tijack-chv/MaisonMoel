@@ -14,6 +14,9 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
 
   final controller = PageController(initialPage: 1);
+
+
+
   @override
   void dispose() {
     controller.dispose();
@@ -24,9 +27,56 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: Appbar_Principal(title: widget.title,),
-      body: const Column(),
-
+      body: ListView(
+        children: const <Widget>[
+          ExpansionTile(
+            title: Text(
+                'Entrée',
+              style: TextStyle(color: Colors.black),
+            ),
+            children: <Widget>[
+              ListTile(
+                title: Text('Contenu de la section 1'),
+              ),
+            ],
+          ),
+          ExpansionTile(
+            title: Text(
+              'Plat',
+              style: TextStyle(color: Colors.black),
+            ),
+            children: <Widget>[
+              ListTile(
+                title: Text('Contenu de la section 2'),
+              ),
+            ],
+          ),
+          ExpansionTile(
+            title: Text(
+              'Dessert',
+              style: TextStyle(color: Colors.black),
+            ),
+            children: <Widget>[
+              ListTile(
+                title: Text('Contenu de la section 3'),
+              ),
+            ],
+          ),
+          ExpansionTile(
+            title: Text(
+              'Boisson',
+              style: TextStyle(color: Colors.black),
+            ),
+            children: <Widget>[
+              ListTile(
+                title: Text('Contenu de la section 3'),
+              ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }

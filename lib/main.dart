@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:maison_moel/connexion.dart';
-import 'package:maison_moel/connexionText.dart';
 import 'home.dart';
 import 'package:json_theme/json_theme.dart';
 import 'package:flutter/services.dart';
