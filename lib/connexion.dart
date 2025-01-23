@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'LoginData.dart';
 import 'data/services/Api.dart';
@@ -13,6 +12,8 @@ class Connexion extends StatefulWidget {
 
 class _ConnexionState extends State<Connexion> {
   var obscureText = true;
+  final loginFocus = FocusNode();
+  final passwordFocus = FocusNode();
 
   bool _loading = false;
   LoginData? _data;
@@ -31,10 +32,23 @@ class _ConnexionState extends State<Connexion> {
             content: Text(
               message,
               style: const TextStyle(
-                color: Colors.black
+                color: Colors.white,
               )
             ),
-            backgroundColor: Colors.white,
+            backgroundColor: Color(0xFF292929),
+            actions: <Widget>[
+              TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: const Text(
+                  'OK',
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+            ],
           );
         }
     );
@@ -63,6 +77,8 @@ class _ConnexionState extends State<Connexion> {
 
   @override
   dispose() {
+    loginFocus.dispose();
+    passwordFocus.dispose();
     super.dispose();
   }
 
@@ -84,142 +100,92 @@ class _ConnexionState extends State<Connexion> {
     });
   }
 
-
   @override
   Widget build(BuildContext context) {
-    if (_loading) {
-      return const Center(child: CircularProgressIndicator(),);
-    } else if (_data != null) {
-      //page de connexion
-      Navigator.pushNamed(context,'/home');
-      return const Center();
-    } else {
-      return Scaffold(
-        body: Stack(
-          children: [
-            Container(
-              height: double.infinity,
-              width: double.infinity,
-              decoration: const BoxDecoration(
-                gradient: LinearGradient(
-                    colors: [
-                      Colors.amberAccent,
-                      Colors.black,
-                    ]
-                ),
+    return Scaffold(
+      backgroundColor: Color(0xFF292929),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Image.network(
+            'http://192.168.143.9:8080/images/LOGO_TRANS.png',
+            height: 150,
+            errorBuilder: (BuildContext context, Object exception, StackTrace? stackTrace) {
+              return const Icon(
+                Icons.error,
+                color: Colors.red,
+                size: 150,
+              );
+            },
+          ),
+          const SizedBox(height: 20),
+          const Center(
+            child: Text(
+              'Connexion',
+              style: TextStyle(
+                color: Color(0xFFFFEB99),
+                fontSize: 30,
+                fontFamily: "LibreBaskerville",
               ),
-              child: const Padding(
-                padding: EdgeInsets.only(top: 60.0, left: 22),
-                child: Text(
-                  "Bienvenue\nConnectez-vous !",
-                  style: TextStyle(
-                    fontSize: 26,
-                    fontWeight: FontWeight.bold,
-                  ),
+            ),
+          ),
+          const SizedBox(height: 20),
+          Padding(
+            padding: const EdgeInsets.all(20),
+            child: TextField(
+              style: const TextStyle(
+                color: Colors.grey
+              ),
+              focusNode: loginFocus,
+              onChanged: onLoginChange,
+              decoration: const InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: 'Login',
+                labelStyle: TextStyle(
+                  color: Colors.grey,
                 ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(top: 200.0),
-              child: Container(
-                decoration: const BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(40),
-                      topRight: Radius.circular(40)
-                  ),
-                  color: Colors.white,
-                ),
-                height: double.infinity,
-                width: double.infinity,
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 36.0,right: 36.0),
-                  child: ListView(
-                    children: [
-                      TextField(
-                        decoration: const InputDecoration(
-                          suffixIcon: Icon(Icons.check,color: Colors.grey,),
-                          label: Text(
-                            'Adresse-mail',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.grey,
-                            ),
-                          ),
-                        ),
-                        onChanged: (value) {
-                          onLoginChange(value);
-                        },
-                        style: const TextStyle(color: Colors.grey),
-                      ),
-                      TextField(
-                        obscureText: obscureText,
-                        decoration: InputDecoration(
-                          suffixIcon: IconButton(
-                            icon: Icon(!obscureText? Icons.visibility : Icons.visibility_off,color: Colors.grey,),
-                            onPressed: () {
-                              setState(() {
-                                obscureText = !obscureText;
-                              });
-                            },
-                          ),
-                          label: const Text(
-                            'Mot de passe',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.grey,
-                            ),
-                          ),
-                        ),
-                        onChanged: (value) {
-                          onPasswordChange(value);
-                        },
-                        style: const TextStyle(color: Colors.grey),
-                      ),
-                      const SizedBox(height: 16.0),
-                      const Align(
-                        alignment: Alignment.centerRight,
-                        child: Text(
-                          'Mot de passe oublié ?',
-                          style: TextStyle(
-                            color: Colors.grey,
-                          ),
-                        ),
-                      ),
-                      const SizedBox(height: 80),
-                      InkWell(
-                        child: Container(
-                          height: 50,
-                          width: 300,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(30),
-                            gradient: const LinearGradient(
-                                colors: [
-                                  Colors.amberAccent,
-                                  Colors.black,
-                                ]
-                            ),
-                          ),
-                          child: const Center(
-                            child: Text(
-                              'Se connecter',
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 20,
-                              ),
-                            ),
-                          ),
-                        ),
-                        onTap: () { onLogin(); },
-                      ),
-                      const SizedBox(height: 120),
-                    ],
-                  ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(20),
+            child: TextField(
+              style: const TextStyle(
+                  color: Colors.grey
+              ),
+              focusNode: passwordFocus,
+              onChanged: onPasswordChange,
+              obscureText: obscureText,
+              decoration: const InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: 'Mot de passe',
+                suffixIcon: Icon(Icons.remove_red_eye),
+                labelStyle: TextStyle(
+                  color: Colors.grey,
                 ),
               ),
             ),
-          ],
-        ),
-      );
-    }
+          ),
+          const SizedBox(height: 10),
+          Padding(
+            padding: const EdgeInsets.all(20),
+            child: ElevatedButton(
+              onPressed: onLogin,
+              style: ElevatedButton.styleFrom(
+                backgroundColor: const Color(0xFFFFEB99),
+                padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 20),
+              ),
+              child: const Text(
+                'Connexion',
+                style: TextStyle(
+                  color: Color(0xFF292929),
+                  fontSize: 15,
+                )
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }

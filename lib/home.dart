@@ -27,14 +27,15 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Color(0xFF292929),
       appBar: Appbar_Principal(title: widget.title,),
       body: ListView(
         children: const <Widget>[
           ExpansionTile(
+            iconColor: Color(0xFFFFEB99),
             title: Text(
                 'Entrée',
-              style: TextStyle(color: Colors.black),
+              style: TextStyle(color: Color(0xFFFFEB99)),
             ),
             children: <Widget>[
               ListTile(
@@ -42,36 +43,17 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ],
           ),
+          const SizedBox(height: 10),
           ExpansionTile(
+            iconColor: Color(0xFF292929),
+            backgroundColor: Color(0xFFFFEB99),
             title: Text(
-              'Plat',
-              style: TextStyle(color: Colors.black),
+              'Entrée',
+              style: TextStyle(color: Color(0xFF292929)),
             ),
             children: <Widget>[
               ListTile(
-                title: Text('Contenu de la section 2'),
-              ),
-            ],
-          ),
-          ExpansionTile(
-            title: Text(
-              'Dessert',
-              style: TextStyle(color: Colors.black),
-            ),
-            children: <Widget>[
-              ListTile(
-                title: Text('Contenu de la section 3'),
-              ),
-            ],
-          ),
-          ExpansionTile(
-            title: Text(
-              'Boisson',
-              style: TextStyle(color: Colors.black),
-            ),
-            children: <Widget>[
-              ListTile(
-                title: Text('Contenu de la section 3'),
+                title: Text('Contenu de la section 1'),
               ),
             ],
           ),
