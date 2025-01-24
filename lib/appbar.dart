@@ -19,24 +19,22 @@ class _Appbar_PrincipalState extends State<Appbar_Principal> {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      automaticallyImplyLeading: false,
-      iconTheme: const IconThemeData(color: Colors.black),
+      iconTheme: const IconThemeData(color: Color(0xFFFFEB99)),
       titleTextStyle: const TextStyle(
-          color: Colors.black,
+          color: Color(0xFFFFEB99),
         fontSize: 22,
       ),
       title: Text(
           widget.title,
       ),
-      backgroundColor: Theme.of(context).colorScheme.primaryFixedDim,
-      actions: <Widget>[
-        IconButton(
-          onPressed: (){
-
-          },
-          icon: const Icon(Icons.search),
-        ),
-      ],
+      bottom: PreferredSize(
+          preferredSize: const Size.fromHeight(3.0),
+          child: Container(
+            color: Color(0xFFFFEB99),
+            height: 2.0,
+          )
+      ),
+      backgroundColor: Color(0xFF292929),
     );
   }
 }

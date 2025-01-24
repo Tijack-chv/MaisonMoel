@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:maison_moel/commande.dart';
 import 'package:maison_moel/connexion.dart';
 import 'home.dart';
 import 'package:json_theme/json_theme.dart';
@@ -28,7 +29,7 @@ class MyApp extends StatelessWidget {
       title: 'Maison Moël Flutter',
       initialRoute: '/',
       routes: {
-        '/data': (context) => const Text("data"), // test de route
+        '/data': (context) => const Text("data"),
         '/': (context) => const Connexion(),
         '/home': (context) {
           final args = ModalRoute.of(context)!.settings.arguments as Map;

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:maison_moel/accueil.dart';
 import 'package:maison_moel/appbar.dart';
+import 'package:maison_moel/commande.dart';
 import 'package:maison_moel/connexion.dart';
 import 'package:maison_moel/components/DialogChoix.dart';
 
@@ -26,82 +27,72 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF292929),
+      backgroundColor: Color(0xFF323232),
       appBar: Appbar_Principal(title: widget.title,),
-      body: Padding(
-        padding: const EdgeInsets.only(right: 15, left: 15),
-        child: ListView(
-          children: <Widget>[
-            const SizedBox(height: 10),
-
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Color(0xFF595959)
+      body: ListView(
+        children: <Widget>[
+          const SizedBox(height: 10),
+          Card(
+            color: Color(0xFF292929),
+            elevation: 5,
+            shadowColor: Colors.white30,
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: Color(0xFF292929),
               ),
-              onPressed: () {
-                ChoixDialog(context, 1, widget.token);
-              },
-              child: const Text(
-                  "Entrées",
-                style: TextStyle(
-                  fontSize: 20
-                ),
-              )
+              padding: const EdgeInsets.all(20),
+              child: const Column(
+                children: [
+                  Text(
+                    'Application pour les serveurs',
+                    style: TextStyle(
+                        fontSize: 18,
+                        color: Color(0xFFFFEB99),
+                        fontFamily: 'LibreBaskerville'
+                    )
+                  ),
+                ],
+              ),
             ),
-
-            const SizedBox(height: 20),
-
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                  backgroundColor: Color(0xFF595959)
-              ),
-              onPressed: () {
-                ChoixDialog(context, 2, widget.token);
-              },
-              child: const Text(
-                "Plats",
-                style: TextStyle(
-                    fontSize: 20
+          ),
+          const SizedBox(height: 10),
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => Commande(title: 'Commande', token: widget.token),
                 ),
-              )
-            ),
-
-            const SizedBox(height: 20),
-
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                  backgroundColor: Color(0xFF595959)
-              ),
-              onPressed: () {
-                ChoixDialog(context, 3, widget.token);
-              },
-              child: const Text(
-                "Desserts",
-                style: TextStyle(
-                    fontSize: 20
+              );
+            },
+            child: Card(
+              color: Color(0xFF292929),
+              elevation: 5,
+              shadowColor: Colors.white30,
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: Color(0xFF292929),
                 ),
-              )
-            ),
-
-            const SizedBox(height: 20),
-
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                  backgroundColor: Color(0xFF595959)
-              ),
-              onPressed: () {
-                ChoixDialog(context, 4, widget.token);
-              },
-              child: const Text(
-                "Boissons",
-                style: TextStyle(
-                    fontSize: 20
+                padding: const EdgeInsets.all(20),
+                child: const Column(
+                  children: [
+                    Text(
+                        'Prendre un commande',
+                        style: TextStyle(
+                            fontSize: 18,
+                            color: Color(0xFFFFEB99),
+                            fontFamily: 'LibreBaskerville'
+                        )
+                    ),
+                  ],
                 ),
-              )
+              ),
             )
-          ],
-        ),
-      )
+          ),
+        ],
+      ),
     );
   }
 }

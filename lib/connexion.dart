@@ -110,7 +110,7 @@ class _ConnexionState extends State<Connexion> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Image.asset(
-            'images/logo.png',
+            "assets/images/logo.png",
             height: 150,
             errorBuilder: (BuildContext context, Object exception, StackTrace? stackTrace) {
               return const Icon(

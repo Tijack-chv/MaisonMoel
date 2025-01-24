@@ -51,7 +51,6 @@ Widget generatePlats(int type, String token) {
                         size: 30,
                       ),
                       onPressed: () {
-
                       },
                     ),
                   ],

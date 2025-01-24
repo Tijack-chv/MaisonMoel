@@ -21,6 +21,7 @@ void ChoixDialog(BuildContext context, int type, String token) {
         backgroundColor: Color(0xFF292929),
         child: Container(
           padding: const EdgeInsets.all(20),
+          width: MediaQuery.of(context).size.width,
           child: Column(
             children: [
               Align(
