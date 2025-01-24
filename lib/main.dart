@@ -30,7 +30,10 @@ class MyApp extends StatelessWidget {
       routes: {
         '/data': (context) => const Text("data"), // test de route
         '/': (context) => const Connexion(),
-        '/home': (context) => const MyHomePage(title: "Maison Moël"),
+        '/home': (context) {
+          final args = ModalRoute.of(context)!.settings.arguments as Map;
+          return MyHomePage(title: "Maison Moël", token: args['token']);
+        },
       },
       theme: theme,
       debugShowMaterialGrid: false,

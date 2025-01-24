@@ -33,6 +33,7 @@ flutter:
   assets:
     - assets/themeMoel.json
     - assets/
+    - assets/images/
   fonts:
     - family: LibreBaskerville
       fonts:

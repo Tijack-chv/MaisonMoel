@@ -61,7 +61,9 @@ class _ConnexionState extends State<Connexion> {
         if (response['error'] != null) {
           _showDialog(response['error']);
         } else {
-          Navigator.pushNamed(context,'/home');
+          Navigator.pushNamed(context,'/home', arguments: {
+            'token': response['serveur']['token'],
+          });
         }
       });
 
@@ -107,8 +109,8 @@ class _ConnexionState extends State<Connexion> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Image.network(
-            'http://192.168.143.9:8080/images/LOGO_TRANS.png',
+          Image.asset(
+            'images/logo.png',
             height: 150,
             errorBuilder: (BuildContext context, Object exception, StackTrace? stackTrace) {
               return const Icon(
@@ -140,7 +142,7 @@ class _ConnexionState extends State<Connexion> {
               onChanged: onLoginChange,
               decoration: const InputDecoration(
                 border: OutlineInputBorder(),
-                labelText: 'Login',
+                labelText: 'Adresse mail',
                 labelStyle: TextStyle(
                   color: Colors.grey,
                 ),
