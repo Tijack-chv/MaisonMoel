@@ -3,7 +3,7 @@ import 'package:maison_moel/accueil.dart';
 import 'package:maison_moel/appbar.dart';
 import 'package:maison_moel/commande.dart';
 import 'package:maison_moel/connexion.dart';
-import 'package:maison_moel/components/DialogChoix.dart';
+import 'package:maison_moel/components/PlatsWidget.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title, required this.token});
@@ -35,7 +35,7 @@ class _MyHomePageState extends State<MyHomePage> {
           Card(
             color: Color(0xFF292929),
             elevation: 5,
-            shadowColor: Colors.white30,
+            shadowColor: Colors.white10,
             child: Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
@@ -69,7 +69,7 @@ class _MyHomePageState extends State<MyHomePage> {
             child: Card(
               color: Color(0xFF292929),
               elevation: 5,
-              shadowColor: Colors.white30,
+              shadowColor: Colors.white10,
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
