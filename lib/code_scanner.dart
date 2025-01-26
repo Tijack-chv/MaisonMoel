@@ -28,10 +28,12 @@ class _Scanner extends State<Scanner> {
       if (_barcode != null && _barcode!.rawValue != null) {
         String nom = _barcode!.rawValue!.split(';')[0];
         String date = _barcode!.rawValue!.split(';')[1];
+        String id = _barcode!.rawValue!.split(';')[2];
         afficheDialogQRCode(
           context,
           nom,
           date,
+          id,
           () {
             setState(() {
               _canScan = true;

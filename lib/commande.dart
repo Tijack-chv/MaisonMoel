@@ -63,6 +63,7 @@ class _Commande extends State<Commande> {
                     size: 30,
                   ),
                   onTap: () {
+
                     addPlat(plat, plat.quantite);
                   },
                 ),
@@ -120,9 +121,9 @@ class _Commande extends State<Commande> {
         padding: const EdgeInsets.only(top: 16.0),
         children: [
           Wrap(
-            alignment: WrapAlignment.center, // Centrer les éléments
-            spacing: 8.0, // Espace horizontal entre les chips
-            runSpacing: 8.0, // Espace vertical entre les lignes
+            alignment: WrapAlignment.center,
+            spacing: 8.0,
+            runSpacing: 8.0,
             children: List.generate(options.length, (index) {
               return ChoiceChip(
                 side: const BorderSide(
