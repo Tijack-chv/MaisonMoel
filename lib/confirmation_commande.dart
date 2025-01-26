@@ -70,8 +70,6 @@ class _CommandeConfirmation extends State<CommandeConfirmation> {
         children: [
           Wrap(
             alignment: WrapAlignment.center,
-            spacing: 8.0,
-            runSpacing: 8.0,
             children: [
               if (widget.plats.isEmpty)
                 const Center(
