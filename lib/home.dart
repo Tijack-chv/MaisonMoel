@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:maison_moel/accueil.dart';
 import 'package:maison_moel/appbar.dart';
+import 'package:maison_moel/code_scanner.dart';
 import 'package:maison_moel/commande.dart';
 import 'package:maison_moel/connexion.dart';
 import 'package:maison_moel/components/PlatsWidget.dart';
@@ -90,6 +91,41 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
             )
+          ),
+          const SizedBox(height: 10),
+          GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => Scanner(title: 'Scanner', token: widget.token),
+                  ),
+                );
+              },
+              child: Card(
+                color: Color(0xFF292929),
+                elevation: 5,
+                shadowColor: Colors.white10,
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: Color(0xFF292929),
+                  ),
+                  padding: const EdgeInsets.all(20),
+                  child: const Column(
+                    children: [
+                      Text(
+                          'Scanner un réservation',
+                          style: TextStyle(
+                              fontSize: 18,
+                              color: Color(0xFFFFEB99),
+                              fontFamily: 'LibreBaskerville'
+                          )
+                      ),
+                    ],
+                  ),
+                ),
+              )
           ),
         ],
       ),
