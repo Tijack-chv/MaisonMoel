@@ -8,9 +8,10 @@ import 'package:maison_moel/data/Plat.dart';
 import 'package:maison_moel/data/services/Api.dart';
 
 class Commande extends StatefulWidget {
-  const Commande({super.key, required this.title, required this.token});
+  const Commande({super.key, required this.title, required this.token, this.plats});
   final String title;
   final String token;
+  final Map<Plat, int>? plats;
 
   @override
   State<Commande> createState() => _Commande();
@@ -21,18 +22,18 @@ class _Commande extends State<Commande> {
   int selectedIndex = 0;
   List<String> options = ['Entrées', 'Plats', 'Desserts', 'Boissons'];
   Widget widgets = const Text("data");
-  Map<Plat, int> listPlats = {};
+  late Map<Plat, int> listPlats;
 
   Widget PlatsWidget(int index, String token) {
     return FutureBuilder<List<Plat>>(
       future: API.getPlats(index, token),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return Center(child: CircularProgressIndicator());
+          return const Center(child: CircularProgressIndicator());
         } else if (snapshot.hasError) {
           return Center(child: Text('Erreur: ${snapshot.error}'));
         } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-          return Center(child: Text('Aucun plat disponible.'));
+          return const Center(child: Text('Aucun plat disponible.'));
         } else {
           List<Plat> plats = snapshot.data!;
 
@@ -43,28 +44,31 @@ class _Commande extends State<Commande> {
             itemBuilder: (context, index) {
               Plat plat = plats[index];
               return ListTile(
-                shape: Border(
+                shape: const Border(
                   bottom: BorderSide(
                     color: Color(0xFFFFEB99),
                     width: 0.5,
                   ),
                 ),
                 leading: plat.imagePlat.isNotEmpty ? Image.network(
-                  'http://192.168.143.9:8080/' + plat.imagePlat,
+                  'http://192.168.143.9:8080/${plat.imagePlat}',
                   width: 50,
                   height: 50,
                 ) : const Icon(Icons.image),
-                title: Text(plat.nomPlat + ' - ' + plat.prix.toString() + '€'),
-                subtitle: Text("Stock : " + plat.quantite.toString()),
+                title: Text('${plat.nomPlat} - ${plat.prix}€'),
+                subtitle: Text("Stock : ${plat.quantite}"),
                 trailing: GestureDetector(
-                  child: Icon(Icons.add_circle, color: Colors.green),
+                  child: const Icon(
+                    Icons.add_circle, color: Colors.green,
+                    size: 30,
+                  ),
                   onTap: () {
                     addPlat(plat, plat.quantite);
                   },
                 ),
-                textColor: Color(0xFFFFEB99),
-                tileColor: Color(0xFF292929),
-                contentPadding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                textColor: const Color(0xFFFFEB99),
+                tileColor: const Color(0xFF292929),
+                contentPadding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
               );
             },
           );
@@ -102,6 +106,7 @@ class _Commande extends State<Commande> {
 
   @override
   void initState() {
+    listPlats = widget.plats ?? {};
     GeneratePlats(0);
     super.initState();
   }
@@ -159,7 +164,7 @@ class _Commande extends State<Commande> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => CommandeConfirmation(title: 'Confirmation de la commande', token: widget.token, plats: listPlats),
+                    builder: (context) => CommandeConfirmation(title: 'Confirmation', token: widget.token, plats: listPlats),
                   ),
                 );
               },
