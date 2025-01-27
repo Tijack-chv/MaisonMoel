@@ -19,15 +19,6 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^4.0.0
-  flutter_native_splash: ^2.4.4
-
-flutter_native_splash:
-  color: "#292929" # Fond noir personnalisé
-  image: assets/images/logo_t.png # Chemin vers ton logo
-  android: true # Active pour Android
-  ios: true # Active pour iOS
-  android_gravity: center # Centre le logo sur Android
-  ios_content_mode: scaleAspectFit # Ajuste le logo sur iOS
 
 flutter:
   uses-material-design: true
