@@ -5,6 +5,7 @@ import 'package:maison_moel/code_scanner.dart';
 import 'package:maison_moel/commande.dart';
 import 'package:maison_moel/connexion.dart';
 import 'package:maison_moel/components/PlatsWidget.dart';
+//import 'package:url_launcher/url_launcher.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title, required this.token});
@@ -29,71 +30,67 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFF323232),
-      appBar: Appbar_Principal(title: widget.title,),
       body: ListView(
         children: <Widget>[
           const SizedBox(height: 10),
-          Card(
-            color: Color(0xFF292929),
-            elevation: 5,
-            shadowColor: Colors.white10,
-            child: Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                color: Color(0xFF292929),
-              ),
-              padding: const EdgeInsets.all(20),
-              child: const Column(
-                children: [
-                  Text(
-                    'Application pour les serveurs',
-                    style: TextStyle(
-                        fontSize: 18,
-                        color: Color(0xFFFFEB99),
-                        fontFamily: 'LibreBaskerville'
-                    )
-                  ),
-                ],
-              ),
-            ),
+
+          Image.asset(
+            "assets/images/logo_t.png",
+            height: MediaQuery.of(context).size.width * 0.6,
           ),
-          const SizedBox(height: 10),
-          GestureDetector(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => Commande(title: 'Commande', token: widget.token),
-                ),
-              );
-            },
-            child: Card(
-              color: Color(0xFF292929),
-              elevation: 5,
-              shadowColor: Colors.white10,
+
+          const SizedBox(height: 20),
+
+          const Text(
+              'Application pour serveurs',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                  fontSize: 30,
+                  color: Color(0xFFFFEB99),
+                  fontFamily: 'LibreBaskerville'
+              )
+          ),
+
+          const SizedBox(height: 30),
+
+          Padding(
+            padding: const EdgeInsets.only(left: 10, right: 10),
+            child: GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => Commande(title: 'Commande', token: widget.token),
+                  ),
+                );
+              },
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
+                  border: Border.all(color: Color(0xFFFFEB99), width: 0.5),
                   color: Color(0xFF292929),
                 ),
                 padding: const EdgeInsets.all(20),
                 child: const Column(
                   children: [
                     Text(
-                        'Prendre un commande',
-                        style: TextStyle(
-                            fontSize: 18,
-                            color: Color(0xFFFFEB99),
-                            fontFamily: 'LibreBaskerville'
-                        )
+                      'Prendre un commande',
+                      style: TextStyle(
+                        fontSize: 18,
+                        color: Color(0xFFFFEB99),
+                        fontFamily: 'LibreBaskerville'
+                      )
                     ),
                   ],
                 ),
               ),
-            )
+            ),
           ),
+
           const SizedBox(height: 10),
-          GestureDetector(
+          Padding(
+            padding: const EdgeInsets.only(left: 10, right: 10),
+            child: GestureDetector(
               onTap: () {
                 Navigator.push(
                   context,
@@ -102,30 +99,54 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 );
               },
-              child: Card(
-                color: Color(0xFF292929),
-                elevation: 5,
-                shadowColor: Colors.white10,
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: Color(0xFF292929),
-                  ),
-                  padding: const EdgeInsets.all(20),
-                  child: const Column(
-                    children: [
-                      Text(
-                          'Scanner un réservation',
-                          style: TextStyle(
-                              fontSize: 18,
-                              color: Color(0xFFFFEB99),
-                              fontFamily: 'LibreBaskerville'
-                          )
-                      ),
-                    ],
-                  ),
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  border: Border.all(color: Color(0xFFFFEB99), width: 0.5),
+                  color: Color(0xFF292929),
+                ),
+                padding: const EdgeInsets.all(20),
+                child: const Column(
+                  children: [
+                    Text(
+                      'Scanner un réservation',
+                      style: TextStyle(
+                        fontSize: 18,
+                        color: Color(0xFFFFEB99),
+                        fontFamily: 'LibreBaskerville'
+                      )
+                    ),
+                  ],
                 ),
               )
+            )
+          ),
+
+          const SizedBox(height: 30),
+
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              GestureDetector(
+                onTap: () async {
+                  /*Uri url = Uri.parse('http://192.168.143.9/');
+                  launchUrl(url, mode: LaunchMode.externalApplication);*/
+                },
+                child: Container(
+                  padding: EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    border: Border.all(color: Color(0xFFFFEB99), width: 0.5),
+                    color: Color(0xFF292929),
+                  ),
+                  child: Icon(
+                    Icons.public,
+                    color: Color(0xFFFFEB99),
+                    size: 50,
+                  ),
+                )
+              ),
+            ],
           ),
         ],
       ),
