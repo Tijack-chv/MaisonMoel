@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:maison_moel/accueil.dart';
-import 'package:maison_moel/appbar.dart';
-import 'package:maison_moel/code_scanner.dart';
-import 'package:maison_moel/commande.dart';
-import 'package:maison_moel/connexion.dart';
+import 'package:maison_moel/components/appbar.dart';
+import 'package:maison_moel/view/code_scanner.dart';
+import 'package:maison_moel/view/commande.dart';
+import 'package:maison_moel/view/connexion.dart';
 import 'package:maison_moel/components/PlatsWidget.dart';
+import 'package:maison_moel/view/discussion.dart';
 //import 'package:url_launcher/url_launcher.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -120,6 +120,42 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               )
             )
+          ),
+
+          const SizedBox(height: 10),
+
+          Padding(
+            padding: const EdgeInsets.only(left: 10, right: 10),
+            child: GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => Discussion(title: 'Discussion', token: widget.token),
+                  ),
+                );
+              },
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  border: Border.all(color: Color(0xFFFFEB99), width: 0.5),
+                  color: Color(0xFF292929),
+                ),
+                padding: const EdgeInsets.all(20),
+                child: const Column(
+                  children: [
+                    Text(
+                        'Communication cuisine',
+                        style: TextStyle(
+                            fontSize: 18,
+                            color: Color(0xFFFFEB99),
+                            fontFamily: 'LibreBaskerville'
+                        )
+                    ),
+                  ],
+                ),
+              ),
+            ),
           ),
 
           const SizedBox(height: 30),

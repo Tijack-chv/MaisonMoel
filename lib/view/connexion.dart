@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'LoginData.dart';
-import 'data/services/Api.dart';
+import '../data/services/Api.dart';
 
 class Connexion extends StatefulWidget {
   const Connexion({super.key});
@@ -16,7 +15,6 @@ class _ConnexionState extends State<Connexion> {
   final passwordFocus = FocusNode();
 
   bool _loading = false;
-  LoginData? _data;
   String _username = '';
   String _password = '';
 

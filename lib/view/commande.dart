@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:maison_moel/accueil.dart';
-import 'package:maison_moel/appbar.dart';
-import 'package:maison_moel/confirmation_commande.dart';
-import 'package:maison_moel/connexion.dart';
+import 'package:maison_moel/components/appbar.dart';
+import 'package:maison_moel/view/confirmation_commande.dart';
+import 'package:maison_moel/view/connexion.dart';
 import 'package:maison_moel/components/PlatsWidget.dart';
 import 'package:maison_moel/data/Plat.dart';
 import 'package:maison_moel/data/services/Api.dart';
