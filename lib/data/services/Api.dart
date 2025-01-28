@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import 'package:maison_moel/data/Commande.dart';
 import 'package:maison_moel/data/Message.dart';
 import 'package:maison_moel/data/Plat.dart';
 
@@ -83,10 +84,40 @@ class API {
 
       if (response.statusCode == 200) {
         final Map<String, dynamic> data = json.decode(response.body);
-        print(jsonDecode(response.body));
         if (data['messages'] != null) {
           List<Message> messages = List<Message>.from(data['messages'].map((message) => Message.fromJson(message)));
           return messages;
+        } else {
+          print('Aucun plat trouvé.');
+          return [];
+        }
+      } else {
+        print('Erreur API: ${response.statusCode}');
+        return [];
+      }
+    } catch (e) {
+      print('Erreur lors de la récupération des plats: $e');
+      return [];
+    }
+  }
+
+  static Future<List<Commande>> getCommandes(int index, String token) async {
+    final uri = Uri.http(
+        '192.168.143.9',
+        '/api/getCommandes',
+        {'etat': index.toString(), 'token': token}
+    );
+
+    try {
+      final response = await http.get(uri);
+
+      if (response.statusCode == 200) {
+        final Map<String, dynamic> data = json.decode(response.body);
+        print(jsonDecode(response.body));
+        if (data['commandes'] != null) {
+          List<Commande> commandes = List<Commande>.from(
+              data['commandes'].map((commande) => Commande.fromJson(commande)));
+          return commandes;
         } else {
           print('Aucun plat trouvé.');
           return [];
