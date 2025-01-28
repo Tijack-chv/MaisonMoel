@@ -27,12 +27,13 @@ class _Discussion extends State<Discussion> {
         } else if (snapshot.hasError) {
           return Center(child: Text('Erreur: ${snapshot.error}'));
         } else {
-          List<Message> messages = snapshot.data!.reversed.toList();
+          List<Message> messages = snapshot.data!;
           return ListView.builder(
             reverse: true,
             itemCount: messages.length,
             itemBuilder: (context, index) {
-              return ChatBubble(message: messages[index].message, isMe: messages[index].token == widget.token);
+              print(messages[index].token);
+              return ChatBubble(message: messages[index].message, nom: messages[index].nom, isMe: messages[index].token == widget.token);
             },
           );
         }
