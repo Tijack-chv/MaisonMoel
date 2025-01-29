@@ -103,6 +103,7 @@ class _CommandeConfirmation extends State<CommandeConfirmation> {
                           Icons.remove_circle, color: Colors.red,
                           size: 30,
                         ),
+                        color: Colors.red,
                         onPressed: () {
                          updatePlats(plat.key, plat.value - 1);
                         },
@@ -112,6 +113,7 @@ class _CommandeConfirmation extends State<CommandeConfirmation> {
                           Icons.add_circle, color: Colors.green,
                           size: 30,
                         ),
+                        color: Colors.green,
                         onPressed: () {
                           updatePlats(plat.key, plat.value + 1);
                         },

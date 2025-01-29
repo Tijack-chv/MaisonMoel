@@ -62,13 +62,11 @@ class _Commande extends State<Commande> {
                   ],
                 ),
                 subtitle: Text("Stock : ${plat.quantite}"),
-                trailing: GestureDetector(
-                  child: const Icon(
-                    Icons.add_circle, color: Colors.green,
-                    size: 30,
-                  ),
-                  onTap: () {
-
+                trailing: IconButton(
+                  icon: const Icon(Icons.add_circle),
+                  color: Colors.green,
+                  iconSize: 30,
+                  onPressed: () {
                     addPlat(plat, plat.quantite);
                   },
                 ),
