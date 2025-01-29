@@ -54,7 +54,13 @@ class _Commande extends State<Commande> {
                   width: 50,
                   height: 50,
                 ) : const Icon(Icons.image),
-                title: Text('${plat.nomPlat} - ${plat.prix}€'),
+                title: Wrap(
+                  spacing: 5,
+                  children: [
+                    Text('${plat.nomPlat}'),
+                    if (plat.type == '') const Icon(Icons.eco, color: Colors.green),
+                  ],
+                ),
                 subtitle: Text("Stock : ${plat.quantite}"),
                 trailing: GestureDetector(
                   child: const Icon(

@@ -5,6 +5,7 @@ class Plat {
   final String imagePlat;
   final String description;
   final double prix;
+  final String type;
 
   Plat({
     required this.idPlat,
@@ -13,6 +14,7 @@ class Plat {
     required this.imagePlat,
     required this.description,
     required this.prix,
+    required this.type,
   });
 
   factory Plat.fromJson(Map<String, dynamic> json) {
@@ -23,6 +25,7 @@ class Plat {
       imagePlat: json['imagePlat'] ?? '',
       description: json['descriptionPlat'] ?? '',
       prix: (json['prixHT'] as num).toDouble(),
+      type: json['type'] ?? '',
     );
   }
 }

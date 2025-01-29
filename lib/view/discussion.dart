@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:maison_moel/components/appbar.dart';
 import 'package:maison_moel/components/chat_bubble.dart';
@@ -5,7 +6,7 @@ import 'package:maison_moel/data/Message.dart';
 import 'package:maison_moel/data/services/Api.dart';
 
 class Discussion extends StatefulWidget {
-  const Discussion({super.key, required this.title, required this.token});
+  Discussion({super.key, required this.title, required this.token});
   final String title;
   final String token;
 
@@ -17,6 +18,7 @@ class _Discussion extends State<Discussion> {
   List<String> messages = [];
   TextEditingController _controller = TextEditingController();
   Widget chat = const Text("data");
+  Timer? _timer;
 
   Widget refreshChat() {
     return FutureBuilder<List<Message>>(
@@ -42,9 +44,25 @@ class _Discussion extends State<Discussion> {
 
   }
 
+  void _startTimer() {
+    _timer = Timer.periodic(const Duration(seconds: 15), (Timer t) {
+      setState(() {
+        print('chat refreshed');
+        chat = refreshChat();
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    _timer?.cancel();
+    super.dispose();
+  }
+
   @override
   void initState() {
     super.initState();
+    _startTimer();
     messages = [
       "Bonjour, je suis votre assistant virtuel. Comment puis-je vous aider ?",
     ];
