@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:maison_moel/components/appbar.dart';
+import 'package:maison_moel/components/bottomSheetInfoCommande.dart';
 import 'package:maison_moel/data/Commande.dart';
 import 'package:maison_moel/view/confirmation_commande.dart';
 import 'package:maison_moel/view/connexion.dart';
@@ -50,13 +51,13 @@ class _CommandeState extends State<CommandeState> {
                 ),
                 title: Text('Commande n°${commande.idCommande}'),
                 subtitle: Text("Date : ${commande.date.substring(0,10)} ${commande.date.substring(11,16)}"),
-                trailing: GestureDetector(
-                  child: const Icon(
+                trailing: IconButton(
+                  icon: const Icon(
                     Icons.info,
                     size: 30,
                   ),
-                  onTap: () {
-
+                  onPressed: () {
+                    bottomSheetInfoCommande(context, commande);
                   },
                 ),
                 textColor: const Color(0xFFFFEB99),

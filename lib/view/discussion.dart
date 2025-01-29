@@ -6,7 +6,7 @@ import 'package:maison_moel/data/Message.dart';
 import 'package:maison_moel/data/services/Api.dart';
 
 class Discussion extends StatefulWidget {
-  Discussion({super.key, required this.title, required this.token});
+  const Discussion({super.key, required this.title, required this.token});
   final String title;
   final String token;
 
@@ -16,7 +16,7 @@ class Discussion extends StatefulWidget {
 
 class _Discussion extends State<Discussion> {
   List<String> messages = [];
-  TextEditingController _controller = TextEditingController();
+  final TextEditingController _controller = TextEditingController();
   Widget chat = const Text("data");
   Timer? _timer;
 
@@ -34,7 +34,6 @@ class _Discussion extends State<Discussion> {
             reverse: true,
             itemCount: messages.length,
             itemBuilder: (context, index) {
-              print(messages[index].token);
               return ChatBubble(message: messages[index].message, nom: messages[index].nom, isMe: messages[index].token == widget.token);
             },
           );
