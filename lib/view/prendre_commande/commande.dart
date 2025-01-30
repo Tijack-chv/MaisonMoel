@@ -43,8 +43,12 @@ class _Commande extends State<Commande> {
             itemBuilder: (context, index) {
               Plat plat = plats[index];
               return ListTile(
-                shape: const Border(
-                  bottom: BorderSide(
+                shape: Border(
+                  top: index == 0 ? const BorderSide(
+                    color: Color(0xFFFFEB99),
+                    width: 0.5,
+                  ) : BorderSide.none,
+                  bottom: const BorderSide(
                     color: Color(0xFFFFEB99),
                     width: 0.5,
                   ),
