@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:maison_moel/view/code_scanner.dart';
+import 'package:maison_moel/view/scanner/code_scanner.dart';
 
 void afficheDialogQRCode(BuildContext context, String nom, String date, String id, VoidCallback onClose) {
   showDialog(

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:maison_moel/view/commande.dart';
-import 'package:maison_moel/view/connexion.dart';
+import 'package:maison_moel/view/prendre_commande/commande.dart';
+import 'package:maison_moel/view/connexion/connexion.dart';
 import 'home.dart';
 import 'package:json_theme/json_theme.dart';
 import 'package:flutter/services.dart';
