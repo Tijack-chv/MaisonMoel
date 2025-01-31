@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:maison_moel/components/appbar.dart';
-import 'package:maison_moel/components/bottomSheetInfoCommande.dart';
+import 'package:maison_moel/components/bottomSheet.dart';
 import 'package:maison_moel/data/Commande.dart';
 import 'package:maison_moel/view/prendre_commande/confirmation_commande.dart';
 import 'package:maison_moel/view/connexion/connexion.dart';

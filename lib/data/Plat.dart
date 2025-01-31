@@ -1,3 +1,5 @@
+import 'package:maison_moel/data/Alergene.dart';
+
 class Plat {
   final int idPlat;
   final String nomPlat;
@@ -6,6 +8,7 @@ class Plat {
   final String description;
   final double prix;
   final String type;
+  final List<Alergene> alergenes;
 
   Plat({
     required this.idPlat,
@@ -15,6 +18,7 @@ class Plat {
     required this.description,
     required this.prix,
     required this.type,
+    required this.alergenes,
   });
 
   factory Plat.fromJson(Map<String, dynamic> json) {
@@ -25,7 +29,8 @@ class Plat {
       imagePlat: json['imagePlat'] ?? '',
       description: json['descriptionPlat'] ?? '',
       prix: (json['prixHT'] as num).toDouble(),
-      type: json['type'] ?? '',
+      type: json['type_plat']['libelleTypePlat'] ?? '',
+      alergenes: List<Alergene>.from(json['alergenes'].map((alergene) => Alergene.fromJson(alergene))),
     );
   }
 }

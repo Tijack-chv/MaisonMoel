@@ -99,11 +99,11 @@ class _Discussion extends State<Discussion> {
         bottom: PreferredSize(
             preferredSize: const Size.fromHeight(3.0),
             child: Container(
-              color: Color(0xFFFFEB99),
+              color: const Color(0xFFFFEB99),
               height: 2.0,
             )
         ),
-        backgroundColor: Color(0xFF292929),
+        backgroundColor: const Color(0xFF292929),
       ),
       body: Column(
         children: [
@@ -117,17 +117,20 @@ class _Discussion extends State<Discussion> {
                 Expanded(
                   child: TextField(
                     controller: _controller,
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: Color(0xFFFFEB99),
                     ),
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       hintText: 'Entrez votre message',
                       border: OutlineInputBorder(),
+                      hintStyle: TextStyle(
+                        color: Colors.grey
+                      )
                     ),
                   ),
                 ),
                 IconButton(
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.send,
                     color: Color(0xFFFFEB99),
                   ),

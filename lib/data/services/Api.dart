@@ -11,7 +11,7 @@ class API {
   static Future login(usernameC, passwordC) async {
     String username = usernameC.trim();
     String password = passwordC.trim();
-    final uri = Uri.http('192.168.143.9', '/api/login', {'email': username, 'password': password, 'token': '489bea45-987d-4919-b3b2-4da2ad70e07c'});
+    final uri = Uri.http('maisonmoel-192-168-143-12.traefik.me', '/api/login', {'email': username, 'password': password, 'token': '489bea45-987d-4919-b3b2-4da2ad70e07c'});
 
     try {
       final response = await http.get(uri);
@@ -25,7 +25,7 @@ class API {
 
   static Future<List<Plat>> getPlats(int type, String token) async {
     final uri = Uri.http(
-        '192.168.143.9',
+        'maisonmoel-192-168-143-12.traefik.me',
         '/api/plats',
         {'type': type.toString(), 'token': token}  // Assurez-vous que 'type' est une chaîne
     );
@@ -55,7 +55,7 @@ class API {
 
   static Future<void> sendMessage(String message, String token) async {
     final uri = Uri.http(
-        '192.168.143.9',
+        'maisonmoel-192-168-143-12.traefik.me',
         '/api/sendMessage',
         {'message': message, 'token': token});
 
@@ -74,7 +74,7 @@ class API {
 
   static Future<List<Message>> getMessages(String token) async {
     final uri = Uri.http(
-        '192.168.143.9',
+        'maisonmoel-192-168-143-12.traefik.me',
         '/api/getMessages',
         {'token': token}  // Assurez-vous que 'type' est une chaîne
     );
@@ -103,7 +103,7 @@ class API {
 
   static Future<List<Commande>> getCommandes(int index, String token) async {
     final uri = Uri.http(
-        '192.168.143.9',
+        'maisonmoel-192-168-143-12.traefik.me',
         '/api/getCommandes',
         {'etat': index.toString(), 'token': token}
     );

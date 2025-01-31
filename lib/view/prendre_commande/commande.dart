@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:maison_moel/components/appbar.dart';
+import 'package:maison_moel/components/bottomSheet.dart';
 import 'package:maison_moel/view/prendre_commande/confirmation_commande.dart';
 import 'package:maison_moel/view/connexion/connexion.dart';
 import 'package:maison_moel/components/PlatsWidget.dart';
@@ -62,17 +63,32 @@ class _Commande extends State<Commande> {
                   spacing: 5,
                   children: [
                     Text('${plat.nomPlat}'),
-                    if (plat.type == '') const Icon(Icons.eco, color: Colors.green),
+                    if (plat.type == 'vegan' || plat.type == 'végétarien')
+                      Icon(Icons.eco, color: plat.type == 'végétarien' ? Colors.green[400] : Colors.green[800]),
                   ],
                 ),
                 subtitle: Text("Stock : ${plat.quantite}"),
-                trailing: IconButton(
-                  icon: const Icon(Icons.add_circle),
-                  color: Colors.green,
-                  iconSize: 30,
-                  onPressed: () {
-                    addPlat(plat, plat.quantite);
-                  },
+                trailing: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    if (plat.alergenes.isNotEmpty) IconButton(
+                      icon: const Icon(
+                        Icons.info,
+                        size: 30,
+                      ),
+                      onPressed: () {
+                        bottomSheetInfoPlat(context, plat);
+                      },
+                    ),
+                    IconButton(
+                      icon: const Icon(Icons.add_circle),
+                      color: Colors.green,
+                      iconSize: 30,
+                      onPressed: () {
+                        addPlat(plat, plat.quantite);
+                      },
+                    ),
+                  ],
                 ),
                 textColor: const Color(0xFFFFEB99),
                 tileColor: const Color(0xFF292929),
