@@ -43,10 +43,16 @@ class _Discussion extends State<Discussion> {
 
   }
 
+  Future<void> sendMessage(String texte, String token) async {
+    await API.sendMessage(texte, token);
+    setState(() {
+      chat = refreshChat();
+    });
+  }
+
   void _startTimer() {
     _timer = Timer.periodic(const Duration(seconds: 15), (Timer t) {
       setState(() {
-        print('chat refreshed');
         chat = refreshChat();
       });
     });
@@ -62,9 +68,6 @@ class _Discussion extends State<Discussion> {
   void initState() {
     super.initState();
     _startTimer();
-    messages = [
-      "Bonjour, je suis votre assistant virtuel. Comment puis-je vous aider ?",
-    ];
     chat = refreshChat();
   }
 
@@ -131,8 +134,7 @@ class _Discussion extends State<Discussion> {
                   onPressed: () {
                     if (_controller.text.isNotEmpty) {
                       setState(() {
-                        API.sendMessage(_controller.text, widget.token);
-                        chat = refreshChat();
+                        sendMessage(_controller.text, widget.token);
                       });
                       _controller.clear();
                     }
