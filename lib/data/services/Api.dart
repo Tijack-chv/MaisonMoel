@@ -130,4 +130,56 @@ class API {
       return [];
     }
   }
+
+  static Future<int> createCommande(String table, String token) async {
+    final uri = Uri.http(
+        'maisonmoel-192-168-143-12.traefik.me',
+        '/api/registerOrder',
+        {'token': token, 'table': table}
+    );
+
+    try {
+      final response = await http.get(uri);
+
+      if (response.statusCode == 200) {
+        final Map<String, dynamic> data = json.decode(response.body);
+        if (data['success'] != null) {
+          return data['success'];
+        } else {
+          return -2;
+        }
+      } else {
+        print('Erreur API: ${response.statusCode}');
+        return -1;
+      }
+    } catch (e) {
+      print('Erreur lors de la récupération des plats: $e');
+      return -1;
+    }
+  }
+
+  static Future<void> createLigneCommande(Plat plat, String idCommande, String token, String quantite) async {
+    final uri = Uri.http(
+        'maisonmoel-192-168-143-12.traefik.me',
+        '/api/registerLignOrder',
+        {'token': token, 'plat': plat.idPlat.toString(), 'commande': idCommande, 'quantite': quantite, 'prix': (plat.prix*int.parse(quantite)).toString()}
+    );
+
+    try {
+      final response = await http.get(uri);
+
+      if (response.statusCode == 200) {
+        final Map<String, dynamic> data = json.decode(response.body);
+        if (data['success'] != null) {
+          print('Ligne de commande créée.');
+        } else {
+          print('Erreur lors de la création de la ligne de commande.');
+        }
+      } else {
+        print('Erreur API: ${response.statusCode}');
+      }
+    } catch (e) {
+      print('Erreur lors de la récupération des plats: $e');
+    }
+  }
 }

@@ -151,7 +151,7 @@ class _CommandeConfirmation extends State<CommandeConfirmation> {
           ),
           const SizedBox(height: 20),
           Padding(
-            padding: const EdgeInsets.only(left:40, right: 40),
+            padding: const EdgeInsets.only(left:40, right: 40, bottom: 20),
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(
                 backgroundColor: Color(0xFF292929),
