@@ -76,7 +76,6 @@ void bottomSheetInfoCommande(BuildContext context, Commande commande) {
         child: Padding(
           padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
           child: Container(
-            height: MediaQuery.of(context).size.height * 0.25,
             width: MediaQuery.of(context).size.width,
             child: Column(
               children: [
@@ -109,7 +108,7 @@ void bottomSheetInfoCommande(BuildContext context, Commande commande) {
                     ),
                   ],
                 ),
-                const SizedBox(height: 10),
+                const SizedBox(height: 20),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -122,6 +121,45 @@ void bottomSheetInfoCommande(BuildContext context, Commande commande) {
                     ),
                   ],
                 ),
+                const SizedBox(height: 10),
+                commande.plats.isEmpty ? const ListTile(
+                  shape: const Border(
+                    bottom: BorderSide(
+                      color: Color(0xFFFFEB99),
+                      width: 0.5,
+                    ),
+                  ),
+                  title: Text(
+                    "Pas de plats",
+                    style: const TextStyle(
+                      color: Color(0xFFFFEB99),
+                      fontSize: 18,
+                    ),
+                  ),
+                  textColor: const Color(0xFFFFEB99),
+                  tileColor: const Color(0xFF292929),
+                  contentPadding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                ) : const SizedBox(),
+                for (var plat in commande.plats)
+                  ListTile(
+                    shape: const Border(
+                      bottom: BorderSide(
+                        color: Color(0xFFFFEB99),
+                        width: 0.5,
+                      ),
+                    ),
+                    title: Text(
+                      plat.nomPlat,
+                      style: const TextStyle(
+                        color: Color(0xFFFFEB99),
+                        fontSize: 18,
+                      ),
+                    ),
+                    textColor: const Color(0xFFFFEB99),
+                    tileColor: const Color(0xFF292929),
+                    contentPadding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                  ),
+                const SizedBox(height: 20),
               ],
             ),
           ),

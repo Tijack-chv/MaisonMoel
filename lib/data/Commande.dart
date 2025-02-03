@@ -7,7 +7,7 @@ class Commande {
   final String etat;
   final String nomReservation;
   final int numTable;
-  //final Map<Plat, int> plats;
+  final List<PlatInfo> plats;
 
   Commande({
     required this.idCommande,
@@ -16,7 +16,7 @@ class Commande {
     required this.etat,
     required this.nomReservation,
     required this.numTable,
-    //required this.plats,
+    required this.plats,
   });
 
   factory Commande.fromJson(Map<String, dynamic> json) {
@@ -27,7 +27,7 @@ class Commande {
       etat: json['etat']['libelleEtat'] ?? '',
       nomReservation: json['reservation']['client']['nom'] + json['reservation']['client']['prenom'] ?? '',
       numTable: json['reservation']['idTable'] ?? 0,
-      //plats: json['comporters'] != null ? Map<Plat, int>.from(json['plats'].map((plat) => Plat.fromJson(plat))) : {},
+      plats: List<PlatInfo>.from(json['plats'].map((plat) => PlatInfo.fromJson(plat))),
     );
   }
 }

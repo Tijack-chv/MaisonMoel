@@ -182,4 +182,29 @@ class API {
       print('Erreur lors de la récupération des plats: $e');
     }
   }
+
+  static Future<String> verificationQRCode(String uuid, String token) async {
+    final uri = Uri.http(
+        'maisonmoel-192-168-143-12.traefik.me',
+        '/api/registerReservation',
+        {'uuid': uuid, 'token': token}
+    );
+
+    try {
+      final response = await http.get(uri);
+
+      if (response.statusCode == 200) {
+        final Map<String, dynamic> data = json.decode(response.body);
+        if (data['success'] != null) {
+          return data['success'];
+        } else {
+          return data['error'];
+        }
+      } else {
+        return 'Erreur API: ${response.statusCode}';
+      }
+    } catch (e) {
+      return 'Erreur lors de la vérification du QR Code: $e';
+    }
+  }
 }

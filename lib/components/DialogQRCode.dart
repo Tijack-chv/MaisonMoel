@@ -1,46 +1,36 @@
 import 'package:flutter/material.dart';
+import 'package:maison_moel/data/services/Api.dart';
 import 'package:maison_moel/view/scanner/code_scanner.dart';
 
-void afficheDialogQRCode(BuildContext context, String nom, String date, String id, VoidCallback onClose) {
+
+
+void afficheDialogQRCode(BuildContext context, String reponse, String nom, String date, String id, VoidCallback onClose) {
   showDialog(
     context: context,
     barrierDismissible: false,
     builder: (BuildContext context) {
       return AlertDialog(
         backgroundColor: const Color(0xFF323232),
-        title: const Text(
-          'Vérification',
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            color: Color(0xFFFFEB99),
-            fontSize: 18,
-            fontFamily: 'LibreBaskerville',
-          ),
-        ),
+        title: reponse.contains('confirmée') ? const Icon(Icons.check_circle, color: Colors.green, size: 50) : const Icon(Icons.cancel, color: Colors.red, size: 50),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-
-
-            const SizedBox(height: 10),
             Text(
-              'Nom : $nom',
+              reponse.contains('confirmée') && nom != '' ? 'Nom : $nom' : reponse,
               style: const TextStyle(
                 color: Color(0xFFFFEB99),
                 fontSize: 16,
               ),
             ),
 
-
-            const SizedBox(height: 10),
-            Text(
+            if (reponse.contains('confirmée') && date != '') const SizedBox(height: 10),
+            if (reponse.contains('confirmée') && date != '') Text(
               'Date : $date',
               style: const TextStyle(
                 color: Color(0xFFFFEB99),
                 fontSize: 16,
               ),
             ),
-            const SizedBox(height: 10),
           ],
         ),
         actions: <Widget>[

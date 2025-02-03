@@ -194,33 +194,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
           ),
-
           const SizedBox(height: 30),
-
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              GestureDetector(
-                onTap: () async {
-                  /*Uri url = Uri.parse('http://192.168.143.9/');
-                  launchUrl(url, mode: LaunchMode.externalApplication);*/
-                },
-                child: Container(
-                  padding: EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    border: Border.all(color: Color(0xFFFFEB99), width: 0.5),
-                    color: Color(0xFF292929),
-                  ),
-                  child: Icon(
-                    Icons.public,
-                    color: Color(0xFFFFEB99),
-                    size: 50,
-                  ),
-                )
-              ),
-            ],
-          ),
         ],
       ),
     );
