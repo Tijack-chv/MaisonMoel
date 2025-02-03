@@ -4,7 +4,7 @@ import 'package:maison_moel/view/scanner/code_scanner.dart';
 
 
 
-void afficheDialogQRCode(BuildContext context, String reponse, String nom, String date, String id, VoidCallback onClose) {
+void afficheDialogQRCode(BuildContext context, String reponse, VoidCallback onClose) {
   showDialog(
     context: context,
     barrierDismissible: false,
@@ -16,16 +16,7 @@ void afficheDialogQRCode(BuildContext context, String reponse, String nom, Strin
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             Text(
-              reponse.contains('confirmée') && nom != '' ? 'Nom : $nom' : reponse,
-              style: const TextStyle(
-                color: Color(0xFFFFEB99),
-                fontSize: 16,
-              ),
-            ),
-
-            if (reponse.contains('confirmée') && date != '') const SizedBox(height: 10),
-            if (reponse.contains('confirmée') && date != '') Text(
-              'Date : $date',
+              reponse,
               style: const TextStyle(
                 color: Color(0xFFFFEB99),
                 fontSize: 16,

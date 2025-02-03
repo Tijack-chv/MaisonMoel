@@ -70,7 +70,7 @@ class _Scanner extends State<Scanner> {
                       print(textUuid.text);
                       API.verificationQRCode(textUuid.text, token).then((response) {
                         Navigator.pop(context);
-                        afficheDialogQRCode(context, response, '', '', textUuid.text, () {
+                        afficheDialogQRCode(context, response, () {
                           setState(() {
                             _canScan = true;
                           });
@@ -120,14 +120,13 @@ class _Scanner extends State<Scanner> {
         _canScan = false;
         _barcode = barcodes.barcodes.firstOrNull;
       });
+      print(_barcode!.rawValue);
 
       if (_barcode != null && _barcode!.rawValue != null) {
-        String nom = _barcode!.rawValue!.split(';')[0];
-        String date = _barcode!.rawValue!.split(';')[1];
-        String id = _barcode!.rawValue!.split(';')[2];
+        String id = _barcode!.rawValue!;
 
         API.verificationQRCode(id, widget.token).then((response) {
-          afficheDialogQRCode(context, response, nom, date, id, () {
+          afficheDialogQRCode(context, response, () {
             setState(() {
               _canScan = true;
             });

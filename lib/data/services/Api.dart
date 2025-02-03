@@ -184,10 +184,11 @@ class API {
   }
 
   static Future<String> verificationQRCode(String uuid, String token) async {
+    String id = uuid.trim();
     final uri = Uri.http(
         'maisonmoel-192-168-143-12.traefik.me',
         '/api/registerReservation',
-        {'uuid': uuid, 'token': token}
+        {'uuid': id, 'token': token}
     );
 
     try {
