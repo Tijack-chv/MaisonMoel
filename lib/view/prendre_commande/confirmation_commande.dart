@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:maison_moel/components/appbar.dart';
 import 'package:maison_moel/components/DemandeTable.dart';
 import 'package:maison_moel/view/connexion/connexion.dart';
-import 'package:maison_moel/components/PlatsWidget.dart';
 import 'package:maison_moel/data/Plat.dart';
 import 'package:maison_moel/data/services/Api.dart';
 

@@ -4,7 +4,6 @@ import 'package:maison_moel/view/scanner/code_scanner.dart';
 import 'package:maison_moel/view/prendre_commande/commande.dart';
 import 'package:maison_moel/view/info_commande/commande_state.dart';
 import 'package:maison_moel/view/connexion/connexion.dart';
-import 'package:maison_moel/components/PlatsWidget.dart';
 import 'package:maison_moel/view/communication/discussion.dart';
 //import 'package:url_launcher/url_launcher.dart';
 

@@ -42,6 +42,7 @@ class PlatInfo {
   final String imagePlat;
   final String description;
   final double prix;
+  final int nb_commande;
 
   PlatInfo({
     required this.idPlat,
@@ -50,6 +51,7 @@ class PlatInfo {
     required this.imagePlat,
     required this.description,
     required this.prix,
+    required this.nb_commande,
   });
 
   factory PlatInfo.fromJson(Map<String, dynamic> json) {
@@ -60,6 +62,7 @@ class PlatInfo {
       imagePlat: json['imagePlat'] ?? '',
       description: json['descriptionPlat'] ?? '',
       prix: (json['prixHT'] as num).toDouble(),
+      nb_commande: json['nb_commande'] ?? 0,
     );
   }
 }

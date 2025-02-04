@@ -25,36 +25,56 @@ void bottomSheetInfoPlat(BuildContext context, Plat plat) {
                 padding: const EdgeInsets.only(bottom: 40.0, top: 20.0),
                 child: Column(
                   children: [
-                    SizedBox(height: 25),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: Column(
-                            children: [
-                              Text(
-                                plat.alergenes.length > 1 ? 'Alergènes: ' : 'Alergène: ',
-                                style: const TextStyle(
-                                  color: Color(0xFFFFEB99),
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-
-                              Text(
-                                alergenes,
-                                style: const TextStyle(
-                                  color: Color(0xFFFFEB99),
-                                  fontSize: 20,
-                                ),
-                                softWrap: true,
-                                overflow: TextOverflow.ellipsis,
-                              ),
-                            ],
+                    SizedBox(height: 15),
+                    Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Column(
+                        children: [
+                          Text(
+                            'Type:',
+                            style: const TextStyle(
+                              color: Color(0xFFFFEB99),
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
-                        ),
-                      ],
+
+                          Text(
+                            plat.type,
+                            style: const TextStyle(
+                              color: Color(0xFFFFEB99),
+                              fontSize: 20,
+                            ),
+                            softWrap: true,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Column(
+                        children: [
+                          Text(
+                            plat.alergenes.length > 1 ? 'Alergènes: ' : 'Alergène: ',
+                            style: const TextStyle(
+                              color: Color(0xFFFFEB99),
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+
+                          Text(
+                            alergenes,
+                            style: const TextStyle(
+                              color: Color(0xFFFFEB99),
+                              fontSize: 20,
+                            ),
+                            softWrap: true,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ],
+                      ),
                     ),
                   ],
                 ),
@@ -143,7 +163,7 @@ void bottomSheetInfoCommande(BuildContext context, Commande commande) {
                 for (var plat in commande.plats)
                   ListTile(
                     shape: const Border(
-                      bottom: BorderSide(
+                      top: BorderSide(
                         color: Color(0xFFFFEB99),
                         width: 0.5,
                       ),
@@ -155,11 +175,17 @@ void bottomSheetInfoCommande(BuildContext context, Commande commande) {
                         fontSize: 18,
                       ),
                     ),
+                    trailing: Text(
+                      plat.nb_commande.toString(),
+                      style: const TextStyle(
+                        color: Color(0xFFFFEB99),
+                        fontSize: 18,
+                      ),
+                    ),
                     textColor: const Color(0xFFFFEB99),
                     tileColor: const Color(0xFF292929),
                     contentPadding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
                   ),
-                const SizedBox(height: 20),
               ],
             ),
           ),
