@@ -168,6 +168,11 @@ void bottomSheetInfoCommande(BuildContext context, Commande commande) {
                         width: 0.5,
                       ),
                     ),
+                    leading: plat.imagePlat.isNotEmpty ? Image.network(
+                      'http://192.168.143.9:8080/${plat.imagePlat}',
+                      width: 50,
+                      height: 50,
+                    ) : const Icon(Icons.image),
                     title: Text(
                       plat.nomPlat,
                       style: const TextStyle(

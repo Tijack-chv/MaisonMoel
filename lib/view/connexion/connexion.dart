@@ -20,35 +20,46 @@ class _ConnexionState extends State<Connexion> {
 
   void _showDialog(String message) {
     showDialog(
-        context: context,
-        builder: (context) {
-          return AlertDialog(
-            title: const Align(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: const Align(
+            alignment: Alignment.center,
+            child: Icon(Icons.highlight_off_outlined, color: Colors.red, size: 50),
+          ),
+          content: Text(
+            message,
+            textAlign: TextAlign.center,
+            style: const TextStyle(
+              color: Color(0xFFFFEB99),
+            )
+          ),
+          backgroundColor: const Color(0xFF292929),
+          actions: <Widget>[
+            Align(
               alignment: Alignment.center,
-              child: Icon(Icons.highlight_off_outlined, color: Colors.red, size: 50),
-            ),
-            content: Text(
-              message,
-              style: const TextStyle(
-                color: Colors.white,
-              )
-            ),
-            backgroundColor: Color(0xFF292929),
-            actions: <Widget>[
-              TextButton(
+              child: TextButton(
                 onPressed: () {
                   Navigator.of(context).pop();
                 },
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all<Color>(const Color(0xFF292929)),
+                  side: MaterialStateProperty.all<BorderSide>(const BorderSide(color: Color(0xFFFFEB99))),
+                ),
                 child: const Text(
-                  'OK',
+                  textAlign: TextAlign.center,
+                  'Réessayer',
                   style: TextStyle(
-                    color: Colors.white,
+                    color: Color(0xFFFFEB99),
+                    fontSize: 16,
                   ),
                 ),
               ),
-            ],
-          );
-        }
+            ),
+          ],
+
+        );
+      }
     );
   }
 

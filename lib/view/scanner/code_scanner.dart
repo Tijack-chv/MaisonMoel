@@ -22,48 +22,41 @@ class _Scanner extends State<Scanner> {
 
   void formReservation(BuildContext context, String token) {
     TextEditingController textUuid = TextEditingController();
-
     showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            backgroundColor: const Color(0xFF323232),
-            title: const Text(
-              'Réservation',
-              style: TextStyle(
-                color: Color(0xFFFFEB99),
-                fontSize: 20,
-              ),
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          backgroundColor: const Color(0xFF323232),
+          title: const Text(
+            textAlign: TextAlign.center,
+            'Réservation',
+            style: TextStyle(
+              color: Color(0xFFFFEB99),
+              fontSize: 20,
             ),
-            content: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                TextField(
-                  controller: textUuid,
-                  style: const TextStyle(
-                    color: Color(0xFFFFEB99),
-                  ),
-                  decoration: const InputDecoration(
-                    hintText: 'ID de réservation',
-                    hintStyle: TextStyle(
-                      color: Color(0xFFFFEB99),
-                    ),
-                    enabledBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(
-                        color: Color(0xFFFFEB99),
-                      ),
-                    ),
-                    focusedBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(
-                        color: Color(0xFFFFEB99),
-                      ),
-                    ),
+          ),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              TextField(
+                controller: textUuid,
+                style: const TextStyle(
+                  color: Color(0xFFFFEB99),
+                ),
+                decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: 'UUID de réservation',
+                  labelStyle: TextStyle(
+                    color: Colors.grey,
                   ),
                 ),
-              ],
-            ),
-            actions: <Widget>[
-              Row(
+              ),
+            ],
+          ),
+          actions: <Widget>[
+            Align(
+              alignment: Alignment.center,
+              child: Row(
                 children: [
                   TextButton(
                     onPressed: () {
@@ -108,9 +101,10 @@ class _Scanner extends State<Scanner> {
                   ),
                 ],
               ),
-            ],
-          );
-        }
+            ),
+          ],
+        );
+      }
     );
   }
 

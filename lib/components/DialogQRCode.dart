@@ -25,7 +25,8 @@ void afficheDialogQRCode(BuildContext context, String reponse, VoidCallback onCl
           ],
         ),
         actions: <Widget>[
-          Center(
+          Align(
+            alignment: Alignment.center,
             child: TextButton(
               onPressed: () {
                 onClose();

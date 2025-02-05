@@ -9,7 +9,7 @@ void errorMessage(BuildContext context, String message) {
     builder: (BuildContext context) {
       return AlertDialog(
         backgroundColor: const Color(0xFF323232),
-        title: Icon(
+        title: const Icon(
           Icons.error,
           color: Colors.red,
           size: 50,
@@ -19,13 +19,13 @@ void errorMessage(BuildContext context, String message) {
           children: <Widget>[
             const SizedBox(height: 10),
             Text(
+              textAlign: TextAlign.center,
               message,
               style: const TextStyle(
                 color: Color(0xFFFFEB99),
                 fontSize: 16,
               ),
             ),
-            const SizedBox(height: 10),
           ],
         ),
         actions: <Widget>[

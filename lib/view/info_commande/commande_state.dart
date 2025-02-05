@@ -54,7 +54,7 @@ class _CommandeState extends State<CommandeState> {
                   ),
                 ),
                 title: Text('Commande n°${commande.idCommande}'),
-                subtitle: Text("Date : ${DateFormat("d/MM/yyyy 'à' HH:mm").format(DateTime.parse(commande.date))}"),
+                subtitle: Text("Date : ${DateFormat("dd/MM/yyyy 'à' HH:mm").format(DateTime.parse(commande.date))}"),
                 trailing: IconButton(
                   icon: const Icon(
                     Icons.info,
