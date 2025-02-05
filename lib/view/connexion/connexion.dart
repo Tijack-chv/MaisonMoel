@@ -156,10 +156,17 @@ class _ConnexionState extends State<Connexion> {
               focusNode: passwordFocus,
               onChanged: onPasswordChange,
               obscureText: obscureText,
-              decoration: const InputDecoration(
-                border: OutlineInputBorder(),
+              decoration: InputDecoration(
+                border: const OutlineInputBorder(),
                 labelText: 'Mot de passe',
-                suffixIcon: Icon(Icons.remove_red_eye),
+                suffixIcon: IconButton(
+                  onPressed: () {
+                    setState(() {
+                      obscureText = !obscureText;
+                    });
+                  },
+                  icon: obscureText ? Icon(Icons.visibility_off) : Icon(Icons.visibility),
+                ),
                 labelStyle: TextStyle(
                   color: Colors.grey,
                 ),

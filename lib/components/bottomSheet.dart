@@ -5,7 +5,7 @@ import 'package:maison_moel/data/Plat.dart';
 void bottomSheetInfoPlat(BuildContext context, Plat plat) {
   String alergenes = '';
   for (int i = 0; i < plat.alergenes.length; i++) {
-    alergenes += plat.alergenes[i].descriptionAlergenes;
+    alergenes += plat.alergenes[i].descriptionAlergenes.replaceFirst(plat.alergenes[i].descriptionAlergenes[0], plat.alergenes[i].descriptionAlergenes[0].toUpperCase());;
     if (i != plat.alergenes.length - 1) {
       alergenes += ', ';
     }
@@ -22,15 +22,14 @@ void bottomSheetInfoPlat(BuildContext context, Plat plat) {
           child: Container(
             width: MediaQuery.of(context).size.width,
               child: Padding(
-                padding: const EdgeInsets.only(bottom: 40.0, top: 20.0),
+                padding: const EdgeInsets.only(bottom: 10.0, top: 10.0),
                 child: Column(
                   children: [
-                    SizedBox(height: 15),
                     Padding(
                       padding: const EdgeInsets.all(10.0),
                       child: Column(
                         children: [
-                          Text(
+                          const Text(
                             'Type:',
                             style: const TextStyle(
                               color: Color(0xFFFFEB99),
@@ -40,7 +39,7 @@ void bottomSheetInfoPlat(BuildContext context, Plat plat) {
                           ),
 
                           Text(
-                            plat.type,
+                            plat.type.replaceFirst(plat.type[0], plat.type[0].toUpperCase()),
                             style: const TextStyle(
                               color: Color(0xFFFFEB99),
                               fontSize: 20,
@@ -128,12 +127,12 @@ void bottomSheetInfoCommande(BuildContext context, Commande commande) {
                     ),
                   ],
                 ),
-                const SizedBox(height: 20),
+                const SizedBox(height: 15),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      "Date : ${commande.date.substring(0,10)} ${commande.date.substring(11,16)}",
+                      "Date : ${commande.date}",
                       style: const TextStyle(
                         color: Color(0xFFFFEB99),
                         fontSize: 18,
@@ -141,7 +140,7 @@ void bottomSheetInfoCommande(BuildContext context, Commande commande) {
                     ),
                   ],
                 ),
-                const SizedBox(height: 10),
+                const SizedBox(height: 20),
                 commande.plats.isEmpty ? const ListTile(
                   shape: const Border(
                     bottom: BorderSide(
