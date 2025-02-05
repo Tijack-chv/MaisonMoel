@@ -113,7 +113,6 @@ class API {
 
       if (response.statusCode == 200) {
         final Map<String, dynamic> data = json.decode(response.body);
-        print(data);
         if (data['commandes'] != null) {
           List<Commande> commandes = List<Commande>.from(
               data['commandes'].map((commande) => Commande.fromJson(commande)));

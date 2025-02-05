@@ -60,7 +60,6 @@ class _Scanner extends State<Scanner> {
                 children: [
                   TextButton(
                     onPressed: () {
-                      print(textUuid.text);
                       API.verificationQRCode(textUuid.text, token).then((response) {
                         Navigator.pop(context);
                         afficheDialogQRCode(context, response, () {
@@ -114,7 +113,6 @@ class _Scanner extends State<Scanner> {
         _canScan = false;
         _barcode = barcodes.barcodes.firstOrNull;
       });
-      print(_barcode!.rawValue);
 
       if (_barcode != null && _barcode!.rawValue != null) {
         String id = _barcode!.rawValue!;

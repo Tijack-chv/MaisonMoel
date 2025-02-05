@@ -168,6 +168,9 @@ void bottomSheetInfoCommande(BuildContext context, Commande commande) {
                         width: 0.5,
                       ),
                     ),
+                    subtitle: Text(
+                    '${plat.prix*plat.nb_commande}€',
+                    ),
                     leading: plat.imagePlat.isNotEmpty ? Image.network(
                       'http://192.168.143.9:8080/${plat.imagePlat}',
                       width: 50,
