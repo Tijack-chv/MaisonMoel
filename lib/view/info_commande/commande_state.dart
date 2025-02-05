@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:maison_moel/components/appbar.dart';
 import 'package:maison_moel/components/bottomSheet.dart';
 import 'package:maison_moel/data/Commande.dart';
@@ -53,7 +54,7 @@ class _CommandeState extends State<CommandeState> {
                   ),
                 ),
                 title: Text('Commande n°${commande.idCommande}'),
-                subtitle: Text("Date : ${commande.date.substring(0,10)} ${commande.date.substring(11,16)}"),
+                subtitle: Text("Date : ${DateFormat("d/MM/yyyy 'à' HH:mm").format(DateTime.parse(commande.date))}"),
                 trailing: IconButton(
                   icon: const Icon(
                     Icons.info,

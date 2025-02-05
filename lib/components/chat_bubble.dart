@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:maison_moel/data/Message.dart';
 
 class ChatBubble extends StatelessWidget {
-  final String message;
+  final Message message;
   final bool isMe;
   final String nom;
 
@@ -21,17 +23,30 @@ class ChatBubble extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              nom,
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 14.0,
-                color: isMe ? Color(0xFF616161) : Color(0xFF494949),
-              ),
+            Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  nom,
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 14.0,
+                    color: isMe ? Color(0xFF616161) : Color(0xFF494949),
+                  ),
+                ),
+                SizedBox(width: 5),
+                Text(
+                  DateFormat('HH:mm').format(DateTime.parse(message.date)),
+                  style: TextStyle(
+                    fontSize: 12.0,
+                    color: isMe ? Color(0xFF616161) : Color(0xFF494949),
+                  ),
+                ),
+              ],
             ),
             SizedBox(height: 5),
             Text(
-              message,
+              message.message,
               style: TextStyle(
                 color: isMe ? Color(0xFFFFEB99) : Color(0xFF323232),
                 fontSize: 16.0,

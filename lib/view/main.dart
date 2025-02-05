@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/date_symbol_data_local.dart';
 import 'package:maison_moel/view/prendre_commande/commande.dart';
 import 'package:maison_moel/view/connexion/connexion.dart';
 import 'home.dart';

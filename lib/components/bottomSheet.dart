@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:maison_moel/data/Commande.dart';
 import 'package:maison_moel/data/Plat.dart';
+import 'package:intl/intl.dart';
 
 void bottomSheetInfoPlat(BuildContext context, Plat plat) {
   String alergenes = '';
@@ -132,7 +133,7 @@ void bottomSheetInfoCommande(BuildContext context, Commande commande) {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      "Date : ${commande.date}",
+                      "Date : ${DateFormat("dd/MM/yyyy 'à' HH:mm").format(DateTime.parse(commande.date))}",
                       style: const TextStyle(
                         color: Color(0xFFFFEB99),
                         fontSize: 18,

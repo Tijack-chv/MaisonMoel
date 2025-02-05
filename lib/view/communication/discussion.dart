@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:maison_moel/components/appbar.dart';
 import 'package:maison_moel/components/chat_bubble.dart';
 import 'package:maison_moel/data/Message.dart';
@@ -34,7 +35,21 @@ class _Discussion extends State<Discussion> {
             reverse: true,
             itemCount: messages.length,
             itemBuilder: (context, index) {
-              return ChatBubble(message: messages[index].message, nom: messages[index].nom, isMe: messages[index].token == widget.token);
+              if (index >= 1 && DateFormat('yyyy-MM-dd').format(DateTime.parse(messages[index].date)) != DateFormat('yyyy-MM-dd').format(DateTime.parse(messages[index - 1].date))) {
+                return Column(
+                  children: [
+                    const SizedBox(height: 20),
+                    Text(
+                      DateFormat('dd/MM/yyyy').format(DateTime.parse(messages[index].date)),
+                      style: const TextStyle(
+                        color: Color(0xFF616161),
+                      ),
+                    ),
+                    const SizedBox(height: 20),
+                  ],
+                );
+              }
+              return ChatBubble(message: messages[index], nom: messages[index].nom, isMe: messages[index].token == widget.token);
             },
           );
         }

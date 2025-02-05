@@ -30,7 +30,8 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFF323232),
-      body: ListView(
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           const SizedBox(height: 10),
 
@@ -65,6 +66,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 );
               },
               child: Container(
+                width: MediaQuery.of(context).size.width*0.9,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   border: Border.all(color: Color(0xFFFFEB99), width: 0.5),
@@ -100,6 +102,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 );
               },
               child: Container(
+                width: MediaQuery.of(context).size.width*0.9,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   border: Border.all(color: Color(0xFFFFEB99), width: 0.5),
@@ -136,6 +139,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 );
               },
               child: Container(
+                width: MediaQuery.of(context).size.width*0.9,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   border: Border.all(color: Color(0xFFFFEB99), width: 0.5),
@@ -172,6 +176,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 );
               },
               child: Container(
+                width: MediaQuery.of(context).size.width*0.9,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   border: Border.all(color: Color(0xFFFFEB99), width: 0.5),
